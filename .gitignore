@@ -65,6 +65,8 @@ docs/_build/
 !.gitconfig
 !.gitignore
 !.osx
+!.vim/*
+!.vim
 
 ### reignore some of the things unignored above
 
