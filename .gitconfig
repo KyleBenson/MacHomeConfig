@@ -92,3 +92,6 @@
 [user]
 	email = kyle.edward.benson@gmail.com
 	name = Kyle Benson
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

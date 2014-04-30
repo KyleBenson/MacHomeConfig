@@ -6,12 +6,6 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-alias cdwine="cd ~/projects/wine_app/server/"
-alias winessh="cdwine; vagrant ssh"
-alias wineup="cdwine; vagrant up"
-alias winehalt="cdwine; vagrant halt"
-alias reload="cdwine; vagrant reload"
-
 # Shortcuts
 alias dr="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
