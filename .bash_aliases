@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## VM aliases
+alias linux='cd ~/vagrant_boxes/ubuntu; vagrant up; vagrant ssh'
+
 ## Common directories to move to ##
 alias cdns='cd ~/repos/ns3'
 alias cdwineserver="cd /srv/wine_app_project/server/; workon wine_app"
