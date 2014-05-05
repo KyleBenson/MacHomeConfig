@@ -2,6 +2,7 @@
 
 ## VM aliases
 alias linux='cd ~/vagrant_boxes/ubuntu; vagrant up; vagrant ssh'
+alias cfpy='cf push -b https://github.com/joshuamckenty/heroku-buildpack-python '
 
 ## Common directories to move to ##
 alias cdns='cd ~/repos/ns3'
