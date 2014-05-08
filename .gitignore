@@ -66,6 +66,7 @@ docs/_build/
 !.gitignore
 !.osx
 !.vim/*
+!.vim/*/*
 !.vim
 !.fresh_install.sh
 
