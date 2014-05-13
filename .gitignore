@@ -69,6 +69,7 @@ docs/_build/
 !.vim/*/*
 !.vim
 !.fresh_install.sh
+!repos/*/*/*
 
 ### reignore some of the things unignored above
 
