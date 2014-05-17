@@ -24,12 +24,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.200.200"
+  #config.vm.network "private_network", ip: "192.168.200.200"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  # config.vm.network "public_network"
+  config.vm.network "public_network"
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -53,7 +53,7 @@ config.vm.provider "virtualbox" do |vb|
 
   vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'sigfox', '--vendorid', '0x6001', '--productid', '0x0403']
   vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'temper1', '--vendorid', '0x0c45', '--productid', '0x7401']
-  vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'sd_reader', '--vendorid', '0x05ac', '--productid', '0x8406']
+  #vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'sd_reader', '--vendorid', '0x05ac', '--productid', '0x8406']
 
   # Don't boot with headless mode
   #vb.gui = true
