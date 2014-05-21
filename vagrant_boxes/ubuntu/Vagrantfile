@@ -12,6 +12,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "puppetlabs/ubuntu-12.04-64-nocm"
 
+  # function to determine what the host os is
+  # ref: http://stackoverflow.com/questions/11784109/detecting-operating-systems-in-ruby
+  require 'rbconfig'
+  def os
+          @os ||= (
+                  host_os = RbConfig::CONFIG['host_os']
+                  case host_os
+                  when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+                          :windows
+                  when /darwin|mac os/
+                          :macosx
+                  when /linux/
+                          :linux
+                  when /solaris|bsd/
+                          :unix
+                  else
+                          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+                  end
+          )
+  end
+  #
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -29,7 +50,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network"
+  if os == :macosx
+          config.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
+  else
+          config.vm.network "public_network", :bridge => 'eth0'
+  end
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
