@@ -16,21 +16,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ref: http://stackoverflow.com/questions/11784109/detecting-operating-systems-in-ruby
   require 'rbconfig'
   def os
-          @os ||= (
-                  host_os = RbConfig::CONFIG['host_os']
-                  case host_os
-                  when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
-                          :windows
-                  when /darwin|mac os/
-                          :macosx
-                  when /linux/
-                          :linux
-                  when /solaris|bsd/
-                          :unix
-                  else
-                          raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
-                  end
-          )
+    @os ||= (
+      host_os = RbConfig::CONFIG['host_os']
+      case host_os
+      when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+        :windows
+      when /darwin|mac os/
+        :macosx
+      when /linux/
+        :linux
+      when /solaris|bsd/
+        :unix
+      else
+        raise Error::WebDriverError, "unknown os: #{host_os.inspect}"
+      end
+    )
   end
   #
   # Disable automatic box update checking. If you disable this, then
@@ -40,7 +40,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # Create a private network, which allows host-only access to the machine
@@ -51,9 +50,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   if os == :macosx
-          config.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
+    config.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
   else
-          config.vm.network "public_network", :bridge => 'eth0'
+    config.vm.network "public_network", :bridge => 'eth0'
   end
 
   # If true, then any SSH connections made will enable agent forwarding.
@@ -65,6 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "~/repos", "/home/vagrant/repos"
+  config.vm.synced_folder "~/Downloads", "/home/vagrant/Downloads"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
