@@ -95,3 +95,5 @@ docs/_build/
 # emacs autosave (must appear last to ignore the above unignored things)
 *~
 .*~
+
+*.localrc

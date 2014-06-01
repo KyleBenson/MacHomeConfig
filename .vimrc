@@ -1,13 +1,16 @@
+filetype off
+execute pathogen#infect()
 " Use the Molokai theme (originally created for TextMate by Wimer Hazenberg)
 colorscheme molokai
 
 " Coding stuff "
 set cindent
 set autoindent
-autocmd FileType python setlocal smartindent shiftwidth=4 ts=4 et cinwords=if,elif,else,for,while,try,except,finally,def,class
+"autocmd FileType python setlocal smartindent shiftwidth=4 ts=4 et cinwords=if,elif,else,for,while,try,except,finally,def,class
 filetype indent plugin on
 "removed from autocmd: foldmethod=indent"
 " Make Vim more useful
+imap jj <ESC>
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
