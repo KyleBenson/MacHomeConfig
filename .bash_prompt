@@ -51,5 +51,11 @@ function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
-export PS1="\n\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+USERNAME_PROMPT="\n\[${BOLD}${MAGENTA}\]\u \[$WHITE\]"
+HOST_PROMPT="at \[$ORANGE\]\h \[$WHITE\]"
+# put directory in green text on a black background
+DIR_PROMPT="in \[$GREEN\]\e[40m\]\w\[$WHITE\]\e[0m\]"
+GIT_PROMPT="\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+export PS1="$USERNAME_PROMPT$HOST_PROMPT$DIR_PROMPT$GIT_PROMPT"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
+

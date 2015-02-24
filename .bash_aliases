@@ -25,6 +25,7 @@ alias susp='sudo pm-suspend'
 alias apt-search='sudo apt-cache search'
 alias apt-install='sudo apt-get install -y'
 alias ml='matlab -nodesktop -nosplash'
+alias ipy='ipython'
 
 ## Short scripts for various projects
 alias sheevaprobe="modprobe ftdi_sio vendor=0x9e88 product=0x9e8f"

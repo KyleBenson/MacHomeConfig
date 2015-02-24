@@ -1,5 +1,7 @@
 # Add `~/bin` and coreutils to the `$PATH`
 export PATH="$HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export WORKON_HOME="$HOME/.venvs/"
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
