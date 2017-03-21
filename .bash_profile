@@ -39,3 +39,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+
+export ONOS_ROOT=~/repos/onos
+export KARAF_ROOT=~/repos/apache-karaf-3.0.5
+export MAVEN=~/repos/apache-maven-3.3.9
+source $ONOS_ROOT/tools/dev/bash_profile
