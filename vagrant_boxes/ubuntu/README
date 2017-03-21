@@ -1,1 +1,4 @@
 If you have trouble with VM taking forever to start saying "waiting for network configuration", edit '/etc/init/failsafe.conf' and remove/decrease the sleep statements.
+
+To avoid losing access to shared folders after an upgrade to Vagrant/VirtualBox that doesn't match the 'guest additions' do this:
+vagrant plugin install vagrant-vbguest
