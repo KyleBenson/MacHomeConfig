@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "puppetlabs/ubuntu-12.04-64-nocm"
+  config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
 
   # function to determine what the host os is
   # ref: http://stackoverflow.com/questions/11784109/detecting-operating-systems-in-ruby
@@ -41,23 +41,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   config.vm.network "forwarded_port", guest: 8080, host: 8080
+  #config.vm.network "forwarded_port", guest: 5000, host: 5000
+  config.vm.network "forwarded_port", guest: 8181, host: 8181
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  #config.vm.network "private_network", ip: "192.168.200.200"
+  config.vm.network "private_network", ip: "192.168.200.200"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  if os == :macosx
-    config.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
-  else
-    config.vm.network "public_network", :bridge => 'eth0'
-  end
+  #if os == :macosx
+    #config.vm.network "public_network", :bridge => 'en0: Wi-Fi (AirPort)'
+  #else
+    #config.vm.network "public_network", :bridge => 'eth0'
+  #end
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   config.ssh.forward_agent = true
+
+  # Enable X11 via ssh for graphical programs
+  # NOTE: you'll have to add the following to the vagrant users ~/.ssh/config
+  # Host *
+  #   ForwardAgent yes
+  #   ForwardX11 yes
+  config.ssh.forward_x11 = true
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -88,7 +97,9 @@ config.vm.provider "virtualbox" do |vb|
   #vb.gui = true
 
   # Use VBoxManage to customize the VM. For example to change memory:
-  vb.customize ["modifyvm", :id, "--memory", "2048"]
+  vb.customize ["modifyvm", :id, "--memory", "8192"]
+  vb.customize ["modifyvm", :id, "--ioapic", "on"]
+  vb.customize ["modifyvm", :id, "--cpus", "8"]
 end
 
   # View the documentation for the provider you're using for more
