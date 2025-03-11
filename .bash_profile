@@ -1,12 +1,7 @@
-# Add `~/bin` and coreutils to the `$PATH`
-export PATH="$HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export WORKON_HOME="$HOME/.venvs/"
-source /usr/local/bin/virtualenvwrapper.sh
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,localrc,exports,bash_aliases,aliases,functions,extra}; do
+for file in ~/.{path,bash_prompt,localrc,exports,bash_aliases,aliases,functions,extra,rti.sh}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -39,8 +34,3 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-
-export ONOS_ROOT=~/repos/onos
-export KARAF_ROOT=~/repos/apache-karaf-3.0.5
-export MAVEN=~/repos/apache-maven-3.3.9
-source $ONOS_ROOT/tools/dev/bash_profile
